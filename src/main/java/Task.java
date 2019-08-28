@@ -10,15 +10,22 @@ public abstract class Task {
     }
 
     //Getters
-    public String getStatusIcon() { return (isDone ? "\u2713" : "\u2718"); }//return tick or X symbols
+    public String getStatusIcon() {
+        //return tick or X symbols
+        return (isDone ? "\u2713" : "\u2718");
+    }
 
     public String getDescription() {
         return description;
     }
     
-    public Boolean getIsDone() { return isDone; }
+    public Boolean getIsDone() { 
+        return isDone; 
+    }
 
-    public TaskType getTaskType() { return taskType; }
+    public TaskType getTaskType() { 
+        return taskType; 
+    }
     
     //Setters
     public boolean markAsDone() {
@@ -45,6 +52,7 @@ public abstract class Task {
     
     @Override
     public String toString() {
+        
         String str = "["
                 + this.getStatusIcon()
                 + "] "

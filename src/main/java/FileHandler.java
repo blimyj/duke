@@ -11,12 +11,12 @@ public class FileHandler {
     private String saveLocation;
     private String fileName;
     
-    public FileHandler (String saveLocation, String fileName) {
+    public FileHandler(String saveLocation, String fileName) {
         this.saveLocation = saveLocation;
         this.fileName = fileName;
     }
     
-    public void saveTasks (TaskList tasks) throws DukeException {
+    public void saveTasks(TaskList tasks) throws DukeException {
         
         String strToAdd;
         String filePath = saveLocation + "/" + fileName;
@@ -25,12 +25,16 @@ public class FileHandler {
         try {
             //Check if dir exists, creates if dir does not exist.
             File dataDir = new File(saveLocation);
-            if (!dataDir.exists()) { dataDir.mkdirs(); }
+            if (!dataDir.exists()) { 
+                dataDir.mkdirs(); 
+            }
             //Future: Check if parent dir exists?
 
             //Check if file exists, creates if file does not exist.
             File saveFile =  new File(saveLocation + "/" + fileName);
-            if (!saveFile.exists()) { saveFile.createNewFile(); }
+            if (!saveFile.exists()) { 
+                saveFile.createNewFile(); 
+            }
             
             //Initialise FileWriter
             FileWriter fw = new FileWriter(filePath);
@@ -65,7 +69,7 @@ public class FileHandler {
                 taskArr = taskString.split("@@@");
                 
                 //Instantiates class using appropriate constructor
-                switch(taskArr[0]) {
+                switch (taskArr[0]) {
                 case "TODO":
                     newTask = new Todo(taskArr[2]);
                     break;
@@ -81,7 +85,7 @@ public class FileHandler {
                 }
                 
                 //Marks task as done if saveFile indicates that it is done
-                if(taskArr[1].equals("true")) {
+                if (taskArr[1].equals("true")) {
                     newTask.markAsDone();
                 }
                 //Append to tasks

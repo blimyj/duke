@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class TaskList{
+public class TaskList {
     private LinkedList<Task> tasks;
     
     public TaskList(LinkedList<Task> tasks) {
