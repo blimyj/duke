@@ -52,7 +52,7 @@ public abstract class Task {
         saveString = saveString + this.getIsDone().toString();
         saveString = saveString + "@@@";
         
-        assert this.getDescription().contains("@@@"): "Should not contain \"@@@\"";
+        assert !this.getDescription().contains("@@@"): "Should not contain \"@@@\"";
         saveString = saveString + this.getDescription();
         
         return saveString;

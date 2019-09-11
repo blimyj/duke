@@ -14,16 +14,8 @@ public class Duke {
         try {
             tasks = fileHandler.loadData();
         } catch (DukeException e) {
-            //Does nothing for now
             tasks = new TaskList(new LinkedList<Task>());
         }
-    }
-    
-    public void main(String[] args) {
-        
-        //Start UI
-        //ui = new UI();
-        //ui.start(tasks, fileHandler);
     }
     
     public String getResponse(String input) {
