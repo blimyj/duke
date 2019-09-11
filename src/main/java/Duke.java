@@ -9,7 +9,7 @@ public class Duke {
         
         //Initialize FileHandler
         fileHandler = new FileHandler("../data", "save1.txt");
-
+            
         //Try to load old data.
         try {
             tasks = fileHandler.loadData();

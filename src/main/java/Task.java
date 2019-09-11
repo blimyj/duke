@@ -4,6 +4,7 @@ public abstract class Task {
     protected TaskType taskType;
     
     public Task(String description) {
+        assert description != "" : "Task description can't be empty!";
         this.description = description;
         this.isDone = false;
         this.taskType = TaskType.UNDECIDED;
@@ -50,6 +51,8 @@ public abstract class Task {
         saveString = saveString + "@@@";
         saveString = saveString + this.getIsDone().toString();
         saveString = saveString + "@@@";
+        
+        assert this.getDescription().contains("@@@"): "Should not contain \"@@@\"";
         saveString = saveString + this.getDescription();
         
         return saveString;
