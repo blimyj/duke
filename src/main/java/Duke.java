@@ -1,7 +1,6 @@
 import java.util.LinkedList;
 
 public class Duke {
-    private UI ui;
     private TaskList tasks;
     private FileHandler fileHandler;
     
@@ -21,22 +20,13 @@ public class Duke {
     public String getResponse(String input) {
         String output;
         try {
-            output = this.formattedPrint(Parser.parseAndExecute(input, tasks, fileHandler));
+            output = UI.formattedPrint(Parser.parseAndExecute(input, tasks, fileHandler));
         } catch (DukeException e) {
             LinkedList<String> msg = new LinkedList<>();
             msg.add(e.getMessage());
-            output = this.formattedPrint(msg);
+            output = UI.formattedPrint(msg);
         }
         
-        return output;
-    }
-    
-    public String formattedPrint(LinkedList<String> strings) {
-        String output = "";
-        for (String string: strings) {
-            output = output.concat(string);
-            output = output.concat("\n");
-        }
         return output;
     }
 }
