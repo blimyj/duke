@@ -2,7 +2,11 @@ public abstract class Task {
     protected String description;
     protected boolean isDone;
     protected TaskType taskType;
-    
+
+    /**
+     * Constructor for Task.
+     * @param description Description of Task
+     */
     public Task(String description) {
         assert description != "" : "Task description can't be empty!";
         this.description = description;
@@ -11,6 +15,11 @@ public abstract class Task {
     }
 
     //Getters
+
+    /**
+     * Retrieves UTF-8 Encoded Status Icon of the task based on completion of task.
+     * @return UTF-8 Encoded Status Icon of tick or cross
+     */
     public String getStatusIcon() { 
         
         return (isDone ? "✓" : "✘");
@@ -33,12 +42,21 @@ public abstract class Task {
     }
     
     //Setters
+
+    /**
+     * Marks a task as done.
+     * @return true
+     */
     public boolean markAsDone() {
         
         this.isDone = true;
         return true;
     }
 
+    /**
+     * Converts task to a save string.
+     * @return String of Task for save file format
+     */
     public String toSaveString() {
         //Concat item and two Separators
         //Future: Google best separator to use? or how to save files with delimiters??
@@ -52,7 +70,7 @@ public abstract class Task {
         saveString = saveString + this.getIsDone().toString();
         saveString = saveString + "@@@";
         
-        assert !this.getDescription().contains("@@@"): "Should not contain \"@@@\"";
+        assert !this.getDescription().contains("@@@") : "Should not contain \"@@@\"";
         saveString = saveString + this.getDescription();
         
         return saveString;

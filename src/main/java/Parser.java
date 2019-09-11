@@ -1,7 +1,15 @@
 import java.util.LinkedList;
 
 public class Parser {
-    
+
+    /**
+     * Parses the input and executes the command.
+     * @param input String input provided by user
+     * @param tasks TaskList of Tasks that this user currently has
+     * @param fileHandler FileHandler of the save file for this user
+     * @return response of Duke after parsing and executing the command.
+     * @throws DukeException when command or arguments of input are invalid
+     */
     public static LinkedList<String> parseAndExecute(String input, TaskList tasks, FileHandler fileHandler) 
             throws DukeException {
         //Split input incase it has a command and argument

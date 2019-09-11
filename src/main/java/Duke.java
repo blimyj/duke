@@ -3,7 +3,10 @@ import java.util.LinkedList;
 public class Duke {
     private TaskList tasks;
     private FileHandler fileHandler;
-    
+
+    /**
+     * Creates a Duke object.
+     */
     public Duke() {
         
         //Initialize FileHandler
@@ -16,7 +19,12 @@ public class Duke {
             tasks = new TaskList(new LinkedList<Task>());
         }
     }
-    
+
+    /**
+     * Gets the response from Duke based on users input.
+     * @param input String input from user
+     * @return String response from Duke
+     */
     public String getResponse(String input) {
         String output;
         try {

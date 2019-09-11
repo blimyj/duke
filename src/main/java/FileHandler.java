@@ -15,7 +15,12 @@ public class FileHandler {
         this.saveLocation = saveLocation;
         this.fileName = fileName;
     }
-    
+
+    /**
+     * Writes Tasks from TaskList to save file.
+     * @param tasks TaskList of Tasks
+     * @throws DukeException when there is an IOException
+     */
     public void saveTasks(TaskList tasks) throws DukeException {
         
         String strToAdd;
@@ -50,7 +55,12 @@ public class FileHandler {
             throw new DukeException("Save Failed: " + e.getMessage());
         }
     }
-    
+
+    /**
+     * Generates TaskList based on save file.
+     * @return TaskList of Tasks based on save file
+     * @throws DukeException If save file cannot be found
+     */
     public TaskList loadData() throws DukeException {
         TaskList tasks = new TaskList(new LinkedList<Task>());
         
