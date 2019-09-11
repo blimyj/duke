@@ -4,13 +4,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class Deadline extends Task {
-    protected LocalDateTime byDateTime;
+    protected LocalDateTime byDeadline;
 
-    public Deadline(String description, String byDateTime) throws DukeException {
+    public Deadline(String description, String byDeadline) throws DukeException {
         super(description);
         this.taskType = TaskType.DEADLINE;
         try {
-            this.byDateTime = LocalDateTime.parse(byDateTime, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+            this.byDeadline = LocalDateTime.parse(byDeadline, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         } catch (DateTimeParseException e) {
             throw new DukeException("DateTime Parsing Failed: DateTime Format should follow \"dd/MM/yyyy HH:mm\" " 
                     + "format." 
@@ -18,9 +18,9 @@ public class Deadline extends Task {
         }
     }
 
-    public String getByDateTimeString() {
+    public String getByDeadlineString() {
         try {
-            String string = byDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+            String string = byDeadline.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
             return string;
         } catch (DateTimeException e) {
             return "DateCannotBeFormatted";
@@ -29,7 +29,7 @@ public class Deadline extends Task {
 
     @Override
     public String toSaveString() {
-        String saveString = super.toSaveString() + "@@@" + this.getByDateTimeString();
+        String saveString = super.toSaveString() + "@@@" + this.getByDeadlineString();
         return saveString;
     }
     
@@ -42,7 +42,7 @@ public class Deadline extends Task {
                 + "] "
                 + this.getDescription()
                 + " (by: "
-                + this.getByDateTimeString()
+                + this.getByDeadlineString()
                 + ")";
         return str;
     }
